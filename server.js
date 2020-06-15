@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 //CONNECTS TO DATABASE
-mongsoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+mongsoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log('Connected to Database')
 })
 
