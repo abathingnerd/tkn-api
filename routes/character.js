@@ -5,15 +5,13 @@ const router = express.Router() //CREATE ROUTER
 const Character = require(('../models/Character'))
 
 //GET LIST OF CHARACTERS
-router.get('/', (req, res) => {
-    Character.find({}, { _id: 0 })
-        .exec()
-        .then(result => {
-            res.status(200).json(result)
-        })
-        .catch(err => {
-            res.status(500).json(result)
-        })
-})
+router.get('/', async (req, res) => {
+    try {
+        const characters = await Character.find({}, { _id: 0 })
+        res.status(200).json(characters)
+    } catch(err) {
+        res.status(500).json({ message: err})
+    }
+});
 
 module.exports = router;
