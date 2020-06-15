@@ -2,6 +2,7 @@ require('dotenv/config')
 const mongsoose = require('mongoose') //ALLOWS MONGOOSE TO BE USED
 const express = require('express') //ALLOWS EXPRESS TO BE USED
 const app = express(); //CREATES THE SERVER
+const cors = require('cors')
 
 //PARSES BODY INTO JSON FORMAT
 app.use(express.urlencoded({ extended: true }))
@@ -18,6 +19,7 @@ app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
 //MIDDLEWARE
 const routeCharacter = require('./routes/character')
 const routeMove = require('./routes/move')
+app.use(cors())
 app.use('/character', routeCharacter)
 app.use('/character', routeMove)
 
